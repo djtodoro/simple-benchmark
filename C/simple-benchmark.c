@@ -103,7 +103,7 @@ void quickSort(int arr[], int low, int high) {
 }
 
 void test_3() {
-  int n = 100000;
+  int n = 1000000;
   int *arr = (int *)malloc(n * sizeof(int));
 
   for (int i = 0; i < n; i++) {
@@ -126,7 +126,7 @@ int fib_recursive(int n) {
 }
 
 void test_4() {
-  int n = 40; // Limiting to a small number due to exponential growth in
+  int n = 50; // Limiting to a small number due to exponential growth in
               // recursive calls.
   printf("Fibonacci (recursive) of %d: %d\n", n, fib_recursive(n));
 }
@@ -149,6 +149,62 @@ void test_5() {
   fib_iterative(n);
 }
 
+// Test 6: Nested loops and switch statements.
+
+void test_6() {
+  int n = 100;
+  int sum = 0;
+
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      for (int k = 0; k < n; k++) {
+        switch ((i + j + k) % 4) {
+        case 0:
+          sum += i;
+          break;
+        case 1:
+          sum += j;
+          break;
+        case 2:
+          sum += k;
+          break;
+        case 3:
+          sum += i + j + k;
+          break;
+        }
+      }
+    }
+  }
+
+  printf("Nested loops and switch statements completed with sum: %d\n", sum);
+}
+
+// Test 7: Diamond if/CFG.
+
+void test_7() {
+  int a = rand() % 100;
+  int b = rand() % 100;
+  int c = rand() % 100;
+  int d = rand() % 100;
+  int result;
+
+  if (a > b) {
+    if (c > d) {
+      result = a + c;
+    } else {
+      result = a + d;
+    }
+  } else {
+    if (c > d) {
+      result = b + c;
+    } else {
+      result = b + d;
+    }
+  }
+
+  printf("Diamond if/CFG result: %d\n", result);
+}
+
 int main() {
   srand(time(0));
   test_1();
@@ -156,6 +212,8 @@ int main() {
   test_3();
   test_4();
   test_5();
+  test_6();
+  test_7();
 
   return 0;
 }
